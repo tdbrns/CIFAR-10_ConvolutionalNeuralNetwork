@@ -18,7 +18,7 @@ The neural network model for this program uses **stochastic gradient descent (SG
 > $x$ = output of the preceding neuron.  
 > $b$ = bias asigned to a neuron in a hidden layer.  
 > $y$ = output of the current neuron.
-> $$f(wx + b) = y$$
+> ### $$f(wx + b) = y$$
 5.  When the neuron output values have been passed forward through all the hidden layers, they will reach the **output layer** (the last network layer) where the final output values will be processed by a **loss function** (a.k.a. cost function or error function) that measures how far off the **actual output** is from the **expected output** of the neural network. Typically the expected output has one neuron in the output layer with a value of 1.0, or *true*, and the other neurons in the output layer will have a value of 0, or *false*. The loss function essentially takes the difference of the actual value and the expected value of each output layer neuron and averages them to produce an average loss value. The lower the average loss value, the more accurate the network is.
 6.  The negative derivative of the loss function, or the negative gradient, is calculated. The negative gradient indicates how the weights and biases should be adjusted to get the average loss value as close to 0 as possible.
 7.  After the negative gradient has been calculated using the loss function and the values of the output layer neurons, the weights and biases of the neurons in the hidden layer adjacent to the output layer are adjusted in a way that should bring the average loss value closer to 0. Then, the weights and biases of the next hidden layer are updated to accomodate the the updated weights and biases of the previous hidden layer. This recursive process called **backpropagation** continues until all the weights and biases of the hidden layers have been updated.  
@@ -32,22 +32,23 @@ The most notable features of this neural network are listed below.
 > ReLU Activation Function  
 > $x$ = neuron value  
 > $max(0,x)$ = return $x$ if $x$ > 0; otherwise, return 0
-> $$f(x) = max(0,x)$$  
+> ### $$f(x) = max(0,x)$$  
+
 > Sigmoid Activation Function  
 > $x$ = neuron value
-> $$f(x) = \frac{1}{1 + e^{-x}}$$
+> ### $$f(x) = \frac{1}{1 + e^{-x}}$$
 - **Softmax** function is used in the output layer to convert the neuron output values into a probability distribution representing the probability of each image class being the correct class.
 > Softmax Function   
 > $y_i$ = neuron output values for a specified image class  
 > $\sum_{k=1}^n e^{y_k}$ = sum of all neuron output values for all image classes  
 > $P$ = predicted probability distribution  
 > $c$ = total number of image classes
-> $$f(y_i) = \frac{e^{y_i}}{\sum_{k=1}^c e^{y_k}} = P$$
+> ### $$f(y_i) = \frac{e^{y_i}}{\sum_{k=1}^c e^{y_k}} = P$$
 - **Softmax Loss** is used to calculate the average loss. Basically, softmax loss is the softmax function with the addition of a **cross-entropy** function, which calculates the loss by taking the sum of the negative logarithms of the probabilities produced by the softmax function.  
 > Cross-Entropy Loss Function    
 > $P(x)$ = true probability distribution  
 > $\bar{P}(x)$ = predicted probability distribution given by softmax  
 > $x_i$ = sameple image from a specified image class  
 > $c$ = total number of classes
-> $$CE = -\sum_{i=1}^c P(x_i)⋅\log(\bar{P}(x_i))$$
+> ### $$CE = -\sum_{i=1}^c P(x_i)⋅\log(\bar{P}(x_i))$$
 - **L2 Regularization**, or **ridge regression**, is used to prevent overfitting by penalizing the average loss value with the sum of the squares of the model weights. **Overfitting** occurs when the model fails to generalize, or accurately identify images that are not included in the training dataset.
